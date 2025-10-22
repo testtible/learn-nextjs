@@ -1,6 +1,6 @@
 import { Book } from "@/types/book";
 
-const basicUrl = "http://localhost:12345";
+const basicUrl = "https://onebite-books-server-eight-steel.vercel.app";
 export const getAllBooks = async (): Promise<Book[]> => {
   try {
     const response = await fetch(`${basicUrl}/book`);
