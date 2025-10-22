@@ -5,6 +5,7 @@ import BookItem from "@/pages/components/BookItem";
 import { Book } from "@/types/book";
 import { InferGetStaticPropsType } from "next";
 import { getAllBooks, getRandomBooks } from "@/lib/books-api";
+import Head from "next/head";
 
 // 약속된 이름의 함수(SSR) getServerSideProps
 // return 값은 props 객체 안에 담아두어야 함 (프레임워크의 문법)
@@ -32,6 +33,15 @@ export default function Home({
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>한입북스</title>
+        <meta property="og:image" content="/thumbnail.png" />
+        <meta property="og:title" content="한입북스" />
+        <meta
+          property="og:description"
+          content="한입 북스에 등록된 도서들을 만나보세요"
+        />
+      </Head>
       <section>
         <h3>지금 추천하는 도서</h3>
         {randomBooks.map((book: Book) => (

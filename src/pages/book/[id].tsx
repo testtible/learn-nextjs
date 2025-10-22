@@ -2,6 +2,7 @@ import styles from "./[id].module.css";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { getBookForId } from "@/lib/books-api";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 // 경로 지정
 export const getStaticPaths = async () => {
@@ -50,11 +51,32 @@ export default function Page({
 
   if (!book) return <div>다시 시도해주세요.</div>;
 
-  if (router.isFallback) return <div>Loading...</div>;
+  if (router.isFallback) {
+    return (
+      <>
+        <Head>
+          <title>한입북스</title>
+          <meta property="og:image" content="/thumbnail.png" />
+          <meta property="og:title" content="한입북스" />
+          <meta
+            property="og:description"
+            content="한입 북스에 등록된 도서들을 만나보세요"
+          />
+        </Head>
+        <div>로딩중입니다</div>
+      </>
+    );
+  }
 
   const { coverImgUrl, title, subTitle, description, author, publisher } = book;
   return (
     <div className={styles.container}>
+      <Head>
+        <title>{title}</title>
+        <meta property="og:image" content={coverImgUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+      </Head>
       <div
         className={styles.cover_img_container}
         style={{ backgroundImage: `url('${coverImgUrl}')` }}
