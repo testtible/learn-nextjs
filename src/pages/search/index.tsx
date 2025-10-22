@@ -4,6 +4,8 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import { searchBook } from "@/lib/books-api";
 import { Book } from "@/types/book";
 
+// getStaticPaths
+
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
