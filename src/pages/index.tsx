@@ -20,7 +20,6 @@ export const getStaticProps = async () => {
       books,
       randomBooks,
     },
-    revalidate: 10,
     // 10초마다 데이터를 다시 불러옴(ISR)
   };
   // 컴포넌트보다 먼저 실행되어서, 컴포넌트에 필요한 데이터를 불러오는 함수
